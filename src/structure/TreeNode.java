@@ -14,22 +14,20 @@ public class TreeNode<T> {
     this.children = new ArrayList<TreeNode<T>>();
   }
   
-  private void addChild(TreeNode<T> child) {
-    children.add(child);
-    child.setParent(this);
+  public TreeNode<T> getParent() {
+    return parent;
   }
-  
-  public void addChild(T child) {
-    TreeNode<T> newNode = new TreeNode<T>(child);
-    addChild(newNode);
-  }
-  
+
   private void setParent(TreeNode<T> node) {
     this.parent = node;
   }
-  
-  public TreeNode<T> getParent() {
-    return parent;
+
+  public T getNodeContent() {
+    return nodeContent;
+  }
+
+  public List<TreeNode<T>> getChildren() {
+    return children;
   }
   
   public TreeNode<T> getChild(int index) {
@@ -48,13 +46,15 @@ public class TreeNode<T> {
     }
     throw new Exception("Node not found.");
   }
-  
-  public List<TreeNode<T>> getChildren() {
-    return children;
+
+  private void addChild(TreeNode<T> child) {
+    children.add(child);
+    child.setParent(this);
   }
-  
-  public T getNodeContent() {
-    return nodeContent;
+
+  public void addChild(T child) {
+    TreeNode<T> newNode = new TreeNode<T>(child);
+    addChild(newNode);
   }
   
   public TreeNode<T> removeChild(T obj) throws Exception {
