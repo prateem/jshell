@@ -2,7 +2,9 @@ package system;
 
 public abstract class FileSystemObject {
 
-  private String name;
+  protected String name;
+
+  private Directory parent;
 
   public FileSystemObject(String name) {
     setName(name);
@@ -16,9 +18,17 @@ public abstract class FileSystemObject {
     this.name = name;
   }
 
+  public Directory getParent() {
+    return parent;
+  }
+
+  protected void setParent(Directory parent) {
+    this.parent = parent;
+  }
+
   @Override
   public String toString() {
-    return getName();
+    return name;
   }
 
 }

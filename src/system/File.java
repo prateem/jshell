@@ -8,6 +8,11 @@ public class File extends FileSystemObject {
     super(name);
   }
 
+  public File(String name, String contents) {
+    this(name);
+    setContents(contents);
+  }
+
   public String getContents() {
     return contents;
   }

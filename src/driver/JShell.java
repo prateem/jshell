@@ -2,6 +2,7 @@ package driver;
 
 import exceptions.JShellException;
 import system.FileSystem;
+import system.path.Path;
 
 import java.util.Scanner;
 
@@ -12,8 +13,9 @@ public class JShell {
 
   public static void main(String[] args) {
 
-    FileSystem fileSystem = new FileSystem();
-    CommandParser parser = new CommandParser(fileSystem);
+    FileSystem fileSystem = FileSystem.getFileSystem();
+    Path path = new Path();
+    CommandParser parser = new CommandParser(path);
 
     Scanner scanner = new Scanner(System.in);
 

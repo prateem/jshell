@@ -2,13 +2,15 @@ package driver;
 
 import exceptions.JShellException;
 import system.FileSystem;
+import system.path.Path;
 
 public class CommandParser {
 
-  private FileSystem fileSystem;
+  private static final FileSystem FILE_SYSTEM = FileSystem.getFileSystem();
+  private Path path;
 
-  public CommandParser(FileSystem fileSystem) {
-    this.fileSystem = fileSystem;
+  public CommandParser(Path path) {
+    this.path = path;
   }
 
   public void parse(String command) throws JShellException {
