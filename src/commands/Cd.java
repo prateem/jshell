@@ -1,15 +1,23 @@
 package commands;
 
-import system.FileSystem;
+import system.utilities.Path;
 
+/**
+ * TODO
+ *
+ * @author Prateem Shrestha
+ * @see driver.CommandParser
+ * @see commands.Mkdir
+ */
 public class Cd extends Command {
+
   /**
    * Constructor initializes with a file system.
    *
-   * @param fileSystem File system to do work on.
+   * @param path File system to do work on.
    */
-  public Cd(FileSystem fileSystem) {
-    super(fileSystem);
+  public Cd(Path path) {
+    super(path);
   }
 
   /**
@@ -26,10 +34,11 @@ public class Cd extends Command {
   /**
    * Run a validated "cd" command.
    *
-   * @param validCommand Validated command components to run with.
+   * @param components Validated command components to run with.
    */
   @Override
-  public void runCommand(String[] validCommand) {
+  public void runCommand(String[] components) {
 
   }
+
 }

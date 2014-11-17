@@ -2,17 +2,24 @@ package commands;
 
 import exceptions.FileSystemException;
 import exceptions.ValidationException;
-import system.FileSystem;
+import system.utilities.Path;
 
+/**
+ * TODO
+ *
+ * @author Prateem Shrestha
+ * @see driver.CommandParser
+ * @see commands.Cd
+ */
 public class Mkdir extends Command {
 
   /**
-   * Constructor initializes with a file system.
+   * TODO
    *
-   * @param fileSystem File system to do work on.
+   * @param path TODO
    */
-  public Mkdir(FileSystem fileSystem) {
-    super(fileSystem);
+  public Mkdir(Path path) {
+    super(path);
   }
 
   /**
@@ -23,33 +30,17 @@ public class Mkdir extends Command {
    */
   @Override
   public String[] getValidComponents(String command) throws ValidationException {
-    String[] cmd = Command.splitOnWhitespace(command);
-
-    if (!(cmd.length > 1)) {
-      Command.throwInvalidCommandError();
-    } else {
-      String path;
-
-      for (int i = 1; i < cmd.length; i++) {
-        path = cmd[i];
-        if (!isValidPath(path)) {
-          throw new ValidationException(String.format(
-              "'mkdir': Invalid path %s", path
-          ));
-        }
-      }
-    }
-
-    return cmd;
+    return new String[0];
   }
 
   /**
    * Run a "mkdir" command.
    *
-   * @param validCommand Validated command components to run with.
+   * @param components Validated command components to run with.
    */
   @Override
-  public void runCommand(String[] validCommand) throws FileSystemException {
+  public void runCommand(String[] components) throws FileSystemException {
 
   }
+
 }

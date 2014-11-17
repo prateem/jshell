@@ -2,10 +2,18 @@ package driver;
 
 import exceptions.JShellException;
 import system.FileSystem;
-import system.path.Path;
+import system.utilities.Path;
 
 import java.util.Scanner;
 
+/**
+ * TODO
+ *
+ * @author Prateem Shrestha
+ * @see system.FileSystem
+ * @see system.utilities.Path
+ * @see driver.CommandParser
+ */
 public class JShell {
 
   final static String _prompt = "/# ";

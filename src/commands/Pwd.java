@@ -1,15 +1,23 @@
 package commands;
 
-import system.FileSystem;
+import system.utilities.Path;
 
+/**
+ * TODO
+ *
+ * @author Prateem Shrestha
+ * @see driver.CommandParser
+ * @see commands.Cd
+ */
 public class Pwd extends Command {
+
   /**
-   * Constructor initializes with a file system.
+   * TODO
    *
-   * @param fileSystem File system to do work on.
+   * @param path TODO
    */
-  public Pwd(FileSystem fileSystem) {
-    super(fileSystem);
+  public Pwd(Path path) {
+    super(path);
   }
 
   /**
@@ -26,10 +34,11 @@ public class Pwd extends Command {
   /**
    * Run a validated "pwd" command.
    *
-   * @param validCommand Validated command components to run with.
+   * @param components Validated command components to run with.
    */
   @Override
-  public void runCommand(String[] validCommand) {
+  public void runCommand(String[] components) {
 
   }
+
 }
