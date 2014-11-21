@@ -1,12 +1,14 @@
-package driver;
+package com.prateem.jshell.driver;
 
-import commands.Cd;
-import commands.Command;
-import commands.Mkdir;
-import commands.Pwd;
-import exceptions.JShellException;
-import system.FileSystem;
-import system.utilities.Path;
+import com.prateem.jshell.commands.Cd;
+import com.prateem.jshell.commands.Command;
+import com.prateem.jshell.commands.Mkdir;
+import com.prateem.jshell.commands.PopD;
+import com.prateem.jshell.commands.PushD;
+import com.prateem.jshell.commands.Pwd;
+import com.prateem.jshell.exceptions.JShellException;
+import com.prateem.jshell.system.FileSystem;
+import com.prateem.jshell.system.utilities.Path;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,10 +17,10 @@ import java.util.Map;
  * TODO
  *
  * @author Prateem Shrestha
- * @see commands.Command
- * @see commands.Cd
- * @see commands.Mkdir
- * @see commands.Pwd
+ * @see com.prateem.jshell.commands.Command
+ * @see com.prateem.jshell.commands.Cd
+ * @see com.prateem.jshell.commands.Mkdir
+ * @see com.prateem.jshell.commands.Pwd
  */
 public class CommandParser {
 
@@ -58,6 +60,8 @@ public class CommandParser {
     commandMap = new HashMap<String, Command>();
     commandMap.put("cd", new Cd(path));
     commandMap.put("mkdir", new Mkdir(path));
+    commandMap.put("popd", new PopD(path));
+    commandMap.put("pushd", new PushD(path));
     commandMap.put("pwd", new Pwd(path));
   }
 }

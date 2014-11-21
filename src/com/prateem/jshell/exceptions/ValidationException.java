@@ -1,10 +1,10 @@
-package exceptions;
+package com.prateem.jshell.exceptions;
 
 /**
  * Carries exception messages that relate to validation errors.
  *
  * @author Prateem Shrestha
- * @see exceptions.FileSystemException
+ * @see com.prateem.jshell.exceptions.FileSystemException
  */
 public class ValidationException extends JShellException {
 

@@ -1,6 +1,6 @@
-package system;
+package com.prateem.jshell.system;
 
-import exceptions.FileSystemException;
+import com.prateem.jshell.exceptions.FileSystemException;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import java.util.List;
  * FileSystemObjects.
  *
  * @author Prateem Shrestha
- * @see system.File
+ * @see com.prateem.jshell.system.File
  */
 public class Directory extends FileSystemObject
     implements Iterable<FileSystemObject> {

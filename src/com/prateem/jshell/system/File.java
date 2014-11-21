@@ -1,4 +1,4 @@
-package system;
+package com.prateem.jshell.system;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
  * Basic node of a FileSystem. Has a name and contents.
  *
  * @author Prateem Shrestha
- * @see system.Directory
+ * @see com.prateem.jshell.system.Directory
  */
 public class File extends FileSystemObject {
 

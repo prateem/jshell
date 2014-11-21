@@ -1,4 +1,4 @@
-package system.utilities;
+package com.prateem.jshell.system.utilities;
 
 /**
  * Captures strings given to it in a StringBuilder buffer and allows the

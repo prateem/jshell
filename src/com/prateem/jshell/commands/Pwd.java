@@ -1,20 +1,21 @@
-package commands;
+package com.prateem.jshell.commands;
 
-import system.utilities.Path;
+import com.prateem.jshell.system.utilities.Path;
 
 /**
  * TODO
  *
  * @author Prateem Shrestha
- * @see driver.CommandParser
- * @see commands.Cd
+ * @see com.prateem.jshell.driver.CommandParser
+ * @see com.prateem.jshell.commands.Cd
  */
 public class Pwd extends Command {
 
   /**
-   * TODO
+   * Constructor initializes with the unique Path of the current JShell that is
+   * running.
    *
-   * @param path TODO
+   * @param path Path to utilize or manipulate.
    */
   public Pwd(Path path) {
     super(path);
@@ -37,7 +38,7 @@ public class Pwd extends Command {
    * @param components Validated command components to run with.
    */
   @Override
-  public void runCommand(String[] components) {
+  public void run(String[] components) {
 
   }
 

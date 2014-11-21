@@ -1,8 +1,8 @@
-package driver;
+package com.prateem.jshell.driver;
 
-import exceptions.JShellException;
-import system.FileSystem;
-import system.utilities.Path;
+import com.prateem.jshell.exceptions.JShellException;
+import com.prateem.jshell.system.FileSystem;
+import com.prateem.jshell.system.utilities.Path;
 
 import java.util.Scanner;
 
@@ -10,9 +10,9 @@ import java.util.Scanner;
  * TODO
  *
  * @author Prateem Shrestha
- * @see system.FileSystem
- * @see system.utilities.Path
- * @see driver.CommandParser
+ * @see com.prateem.jshell.system.FileSystem
+ * @see com.prateem.jshell.system.utilities.Path
+ * @see com.prateem.jshell.driver.CommandParser
  */
 public class JShell {
 

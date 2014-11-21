@@ -1,22 +1,23 @@
-package commands;
+package com.prateem.jshell.commands;
 
-import exceptions.FileSystemException;
-import exceptions.ValidationException;
-import system.utilities.Path;
+import com.prateem.jshell.exceptions.FileSystemException;
+import com.prateem.jshell.exceptions.ValidationException;
+import com.prateem.jshell.system.utilities.Path;
 
 /**
  * TODO
  *
  * @author Prateem Shrestha
- * @see driver.CommandParser
- * @see commands.Cd
+ * @see com.prateem.jshell.driver.CommandParser
+ * @see com.prateem.jshell.commands.Cd
  */
 public class Mkdir extends Command {
 
   /**
-   * TODO
+   * Constructor initializes with the unique Path of the current JShell that is
+   * running.
    *
-   * @param path TODO
+   * @param path Path to utilize or manipulate.
    */
   public Mkdir(Path path) {
     super(path);
@@ -39,7 +40,7 @@ public class Mkdir extends Command {
    * @param components Validated command components to run with.
    */
   @Override
-  public void runCommand(String[] components) throws FileSystemException {
+  public void run(String[] components) throws FileSystemException {
 
   }
 
