@@ -1,6 +1,7 @@
 package system;
 
 import exceptions.FileSystemException;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -149,7 +150,7 @@ public class Directory extends FileSystemObject
    * can not share a name in this system.
    */
   @Override
-  public int compareTo(FileSystemObject fso) {
+  public int compareTo(@NotNull FileSystemObject fso) {
     if (fso instanceof File) {
       return -1;
     }

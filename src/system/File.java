@@ -1,5 +1,7 @@
 package system;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * Basic node of a FileSystem. Has a name and contents.
  *
@@ -71,7 +73,7 @@ public class File extends FileSystemObject {
    * can not share a name in this system.
    */
   @Override
-  public int compareTo(FileSystemObject fso) {
+  public int compareTo(@NotNull FileSystemObject fso) {
     if (fso instanceof Directory) {
       return 1;
     }
