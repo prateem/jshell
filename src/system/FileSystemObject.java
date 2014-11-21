@@ -10,7 +10,7 @@ import exceptions.FileSystemException;
  * @see system.File
  * @see system.Directory
  */
-public abstract class FileSystemObject {
+public abstract class FileSystemObject implements Comparable<FileSystemObject> {
 
   /**
    * The name of the file system node.

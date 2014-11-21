@@ -4,7 +4,6 @@ import exceptions.FileSystemException;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -17,43 +16,6 @@ import java.util.List;
  */
 public class Directory extends FileSystemObject
     implements Iterable<FileSystemObject> {
-
-  /**
-   * Comparator for sorting contents.
-   */
-  private static final Comparator<FileSystemObject> COMPARATOR =
-      new FileSystemObjectComparator();
-
-  /**
-   * TODO
-   *
-   * @author Prateem Shrestha
-   */
-  private static class FileSystemObjectComparator
-      implements Comparator<FileSystemObject> {
-    /**
-     * Compare two FileSystemObjects to each other. If the two objects are of
-     * similar extending classes, return the comparison of the object names. If
-     * they are of two differing classes, sort Directory objects before File
-     * objects.
-     *
-     * @param fso1 A FileSystemObject to perform comparison with.
-     * @param fso2 Another FileSystemObject to perform comparison on.
-     * @return -1 if fso1 should be sorted before fso2, or +1 if fso1 should be
-     * sorted after fso2. This method should never return 0 since two objects
-     * can not share a name in this system.
-     */
-    @Override
-    public int compare(FileSystemObject fso1, FileSystemObject fso2) {
-      if (fso1 instanceof Directory && fso2 instanceof File) {
-        return -1;
-      } else if (fso1 instanceof File && fso2 instanceof Directory) {
-        return 1;
-      }
-
-      return fso1.name.compareTo(fso2.name);
-    }
-  }
 
   /**
    * List of all contents that reside in this Folder.
@@ -80,7 +42,9 @@ public class Directory extends FileSystemObject
   public final void add(FileSystemObject object) throws FileSystemException {
     children.add(object);
     object.setParent(this);
-    sort();
+
+    // Sort all children after addition.
+    Collections.sort(children);
   }
 
   /**
@@ -93,14 +57,6 @@ public class Directory extends FileSystemObject
       children.remove(object);
       object.setParent(null);
     }
-  }
-
-  /**
-   * Sort children alphabetically, with Directory objects sorted before File
-   * objects.
-   */
-  private void sort() {
-    Collections.sort(children, COMPARATOR);
   }
 
   /**
@@ -172,6 +128,35 @@ public class Directory extends FileSystemObject
   }
 
   /**
+   * Return whether or not this Directory has any children.
+   *
+   * @return True if and only if the Directory has no FileSystemObjects as
+   * children (subdirectories and files).
+   */
+  public final boolean isEmpty() {
+    return children.isEmpty();
+  }
+
+  /**
+   * Compare the Directory object against another FileSystemObject. If the other
+   * FileSystemObject is also a Directory, return the comparison of the
+   * directory names. If the other object is a File, sort this before the File.
+   *
+   * @param fso A FileSystemObject to perform comparison with.
+   * @return -1 if this should be sorted before fso, or +1 if this should be
+   * sorted after fso. This method should never return 0 since two objects
+   * can not share a name in this system.
+   */
+  @Override
+  public int compareTo(FileSystemObject fso) {
+    if (fso instanceof File) {
+      return -1;
+    }
+
+    return name.compareTo(fso.name);
+  }
+
+  /**
    * Build and return a Directory object that is identical but unique in
    * comparison to this object - a deep copy. Alterations in the original
    * object will not have any effect on the clone object.
@@ -189,16 +174,6 @@ public class Directory extends FileSystemObject
     }
 
     return clone;
-  }
-
-  /**
-   * Return whether or not this Directory has any children.
-   *
-   * @return True if and only if the Directory has no FileSystemObjects as
-   * children (subdirectories and files).
-   */
-  public final boolean isEmpty() {
-    return children.isEmpty();
   }
 
   /**

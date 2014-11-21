@@ -61,6 +61,25 @@ public class File extends FileSystemObject {
   }
 
   /**
+   * Compare the File object against another FileSystemObject. If the other
+   * FileSystemObject is also a File, return the comparison of the file names.
+   * If the other object is a Directory, sort the Directory before the File.
+   *
+   * @param fso A FileSystemObject to perform comparison with.
+   * @return -1 if this should be sorted before fso, or +1 if this should be
+   * sorted after fso. This method should never return 0 since two objects
+   * can not share a name in this system.
+   */
+  @Override
+  public int compareTo(FileSystemObject fso) {
+    if (fso instanceof Directory) {
+      return 1;
+    }
+
+    return name.compareTo(fso.name);
+  }
+
+  /**
    * Returns a File object that is identical but unique in comparison to
    * this object - a deep copy. Alterations in the original object will not
    * have any effect on the clone object.
