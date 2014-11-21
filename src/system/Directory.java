@@ -124,7 +124,8 @@ public class Directory extends FileSystemObject
       }
     }
 
-    throw new FileSystemException("No child by that name exists.");
+    throw new FileSystemException(String.format(
+        "jshell: file '%s' does not exist in %s", name, this.name));
   }
 
   /**
