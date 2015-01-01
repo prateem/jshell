@@ -169,13 +169,10 @@ public class Path {
                                String path) {
     try {
       FileSystemObject fileSystemObject = get(path);
-      if (fileSystemObject.getClass() == type) {
-        return true;
-      }
+      return fileSystemObject.getClass() == type;
     } catch (FileSystemException e) {
       return false;
     }
-    return false;
   }
 
   /**

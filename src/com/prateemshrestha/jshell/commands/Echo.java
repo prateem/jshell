@@ -43,6 +43,7 @@ public class Echo extends Command {
 
   /**
    * Output provided arguments to the shell.
+   *
    * @param args Arguments to be output to the shell.
    */
   @Override
