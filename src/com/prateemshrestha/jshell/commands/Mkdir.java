@@ -1,8 +1,14 @@
 package com.prateemshrestha.jshell.commands;
 
+import com.prateemshrestha.jshell.driver.JShellRunner;
 import com.prateemshrestha.jshell.exceptions.FileSystemException;
 import com.prateemshrestha.jshell.exceptions.ValidationException;
+import com.prateemshrestha.jshell.system.Directory;
+import com.prateemshrestha.jshell.system.FileSystemObject;
 import com.prateemshrestha.jshell.system.utilities.Path;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * TODO
@@ -10,6 +16,7 @@ import com.prateemshrestha.jshell.system.utilities.Path;
  * @author Prateem Shrestha
  * @see com.prateemshrestha.jshell.driver.CommandParser
  * @see com.prateemshrestha.jshell.commands.Cd
+ * @see com.prateemshrestha.jshell.system.Directory
  */
 public class Mkdir extends Command {
 
@@ -31,7 +38,62 @@ public class Mkdir extends Command {
    */
   @Override
   public String[] getValidComponents(String command) throws ValidationException {
-    return new String[0];
+    String[] components = stripWhitespace(command);
+
+    if (components.length < 2) {
+      throw new ValidationException("mkdir: missing operand");
+    }
+
+    List<String> valid = new ArrayList<String>();
+
+    String directoryPath;
+    for (int i = 1; i < components.length; i++) {
+      directoryPath = components[i];
+
+      if (directoryCanBeMade(directoryPath)) {
+        valid.add(directoryPath);
+      }
+    }
+
+    return valid.toArray(new String[valid.size()]);
+  }
+
+  /**
+   * Identify any problems with making a directory using the specified path.
+   * Ensures that the directory name is valid, and that the location to make the
+   * directory in exists. Finally, ensures that the directory does not already
+   * exist.
+   *
+   * @param directoryPath The path to the directory to check for problems with.
+   */
+  private boolean directoryCanBeMade(String directoryPath) {
+    String[] pathComponents = Path.getPathComponents(directoryPath);
+
+    // Make sure that we can get to this location to make the folder.
+    if (!path.isValid(Directory.class, pathComponents[0])) {
+      JShellRunner.runError(String.format(
+          "mkdir: cannot create directory '%s': No such file or directory",
+          directoryPath), true);
+      return false;
+    }
+
+    // Make sure the directory doesn't already exist.
+    if (path.isValid(FileSystemObject.class, directoryPath)) {
+      JShellRunner.runError(String.format(
+          "mkdir: cannot create directory '%s': File or folder exists",
+          directoryPath), true);
+      return false;
+    }
+
+    // Finally, make sure that the given desired directory name is valid.
+    if (!FileSystemObject.canBeNamed(pathComponents[1])) {
+      JShellRunner.runError(String.format(
+          "mkdir: cannot create directory '%s': Invalid name", directoryPath
+      ), true);
+      return false;
+    }
+
+    return true;
   }
 
   /**
@@ -41,7 +103,11 @@ public class Mkdir extends Command {
    */
   @Override
   public void run(String[] components) throws FileSystemException {
-
+    for (String directoryPath : components) {
+      String[] pathComponents = Path.getPathComponents(directoryPath);
+      Directory location = (Directory) path.get(pathComponents[0]);
+      location.add(new Directory(pathComponents[1]));
+    }
   }
 
 }
