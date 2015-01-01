@@ -1,5 +1,6 @@
 package com.prateem.jshell.commands;
 
+import com.prateem.jshell.driver.JShellRunner;
 import com.prateem.jshell.system.utilities.Path;
 
 /**
@@ -39,7 +40,8 @@ public class Pwd extends Command {
    */
   @Override
   public void run(String[] components) {
-
+    String location = path.getAbsolutePath();
+    JShellRunner.runMessage(location, true);
   }
 
 }
