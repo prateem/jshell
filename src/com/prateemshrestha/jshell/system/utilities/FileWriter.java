@@ -8,7 +8,7 @@ import com.prateemshrestha.jshell.system.Directory;
 
 /**
  * Responsible for writing to a File object in the FileSystem. Calls to write()
- * should be preceeded by the the following four setter methods, with only the
+ * should be preceded by the the following four setter methods, with only the
  * last two listed being optional: setFileName(), setContents(), setFilePath()
  * and setAppendMode(). All setter methods allow method chaining.
  *
@@ -206,39 +206,38 @@ public class FileWriter {
     this.filePath = fPath;
     this.fileName = fName;
     this.appendMode = appendMode;
-
-    OutputCapturer.clear();
   }
 
   /**
    * Check for problems in the given path to be written to.
    *
-   * @param fPath    The path to the desired location of the file.
-   * @param fName    The name of the file to be written to.
+   * @param fPath The path to the desired location of the file.
+   * @param fName The name of the file to be written to.
    * @throws ValidationException If the desired location is not a Directory, or
    * simply doesn't exist, or if an invalid file name was given.
    */
   private void checkForProblems(String fPath, String fName)
       throws ValidationException {
-    String filePath = fPath + "/" + fName;
+    String filePath = fPath + Constants.DIRECTORY_SEPARATOR + fName;
 
-    if (path.isValid(Directory.class, filePath)) {
-      // File path leads to a directory.
-      throw new ValidationException(String.format(
-          "jshell: cannot create file '%s': Is a directory", filePath));
-    } else if (path.isValid(File.class, fPath)) {
-      // Location path leads to a file.
-      throw new ValidationException(String.format(
-          "jshell: '%s': Not a directory", filePath));
-    } else if (!path.isValid(Directory.class, fPath)) {
+    if (!path.isValid(Directory.class, fPath)) {
       // Location does not exist.
       throw new ValidationException(String.format(
-          "jshell: cannot create file '%s': No such file or directory", filePath
+          "jshell: cannot create file '%s': No such file or directory",
+          filePath
       ));
     } else if (!FileSystemObject.canBeNamed(fName)) {
       // Filename invalid.
       throw new ValidationException(String.format(
           "jshell: cannot create file '%s': invalid file name", filePath));
+    } else if (path.isValid(File.class, fPath)) {
+      // Location path leads to a file.
+      throw new ValidationException(String.format(
+          "jshell: '%s': Not a directory", filePath));
+    } else if (path.isValid(Directory.class, filePath)) {
+      // File path leads to a directory.
+      throw new ValidationException(String.format(
+         "jshell: cannot create file '%s': Is a directory", filePath));
     }
   }
 

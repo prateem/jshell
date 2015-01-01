@@ -57,27 +57,35 @@ public class Path {
    * to the location of the object, and the object name.
    */
   public static String[] getPathComponents(String path) {
-    String[] pathNodes = path.split("/");
     String[] components = new String[2];
-    components[1] = pathNodes[pathNodes.length - 1];
 
-    StringBuilder pathBuilder = new StringBuilder();
-    // Maintain absolute paths.
-    if (path.startsWith("/")) {
-      pathBuilder.append("/");
-    }
+    if (!path.contains(Constants.DIRECTORY_SEPARATOR)) {
+      components[0] = Constants.STR_CURRENT_DIR;
+      components[1] = path;
+    } else {
+      String[] pathNodes = path.split(Constants.DIRECTORY_SEPARATOR);
+      components[1] = pathNodes[pathNodes.length - 1];
 
-    for (int i = 0; i < pathNodes.length - 1; i++) {
-      pathBuilder.append(pathNodes[i]);
+      StringBuilder pathBuilder = new StringBuilder();
 
-      // Don't terminate with a trailing slash.
-      // This is particularly important to prevent infinite looping in get().
-      if (i != pathNodes.length - 2) {
-        pathBuilder.append("/");
+      // Maintain absolute paths.
+      if (path.startsWith(Constants.DIRECTORY_SEPARATOR)) {
+        pathBuilder.append(Constants.DIRECTORY_SEPARATOR);
       }
+
+      for (int i = 0; i < pathNodes.length - 1; i++) {
+        pathBuilder.append(pathNodes[i]);
+
+        // Don't terminate with a trailing slash.
+        // This is particularly important to prevent infinite looping in get().
+        if (i != pathNodes.length - 2) {
+          pathBuilder.append(Constants.DIRECTORY_SEPARATOR);
+        }
+      }
+
+      components[0] = pathBuilder.toString();
     }
 
-    components[0] = pathBuilder.toString();
     return components;
   }
 
@@ -89,7 +97,7 @@ public class Path {
   public final String getAbsolutePath() {
     Directory directory = workingDirectory;
     if (directory == FileSystem.ROOT) {
-      return "/";
+      return Constants.STR_ROOT;
     }
 
     // Set up a LIFO list of Directories in the path to this directory
@@ -103,7 +111,7 @@ public class Path {
 
     StringBuilder pathBuilder = new StringBuilder();
     while (!path.isEmpty()) {
-      pathBuilder.append("/").append(path.pop());
+      pathBuilder.append(Constants.DIRECTORY_SEPARATOR).append(path.pop());
     }
 
     return pathBuilder.toString();
@@ -142,7 +150,10 @@ public class Path {
    * @return The new String path containing the file system object.
    */
   public final String buildPathToObject(String path, FileSystemObject fso) {
-    return path + (path.endsWith("/") ? "" : "/") + fso;
+    return path + (
+        path.endsWith(Constants.DIRECTORY_SEPARATOR)
+            ? "" : Constants.DIRECTORY_SEPARATOR
+    ) + fso;
   }
 
   /**
@@ -175,20 +186,20 @@ public class Path {
    * @throws FileSystemException If getting the
    */
   public final FileSystemObject get(String path) throws FileSystemException {
-    if (path.equals("/") || path.equals("~")) {
+    if (path.equals(Constants.STR_ROOT) || path.equals(Constants.STR_HOME)) {
       return FileSystem.ROOT;
     }
 
     Directory location = workingDirectory;
 
-    if (path.equals(".")) {
+    if (path.equals(Constants.STR_CURRENT_DIR)) {
       return location;
-    } else if (path.equals("..")) {
+    } else if (path.equals(Constants.STR_PARENT_DIR)) {
       return location.getParent();
     }
 
     // Find the Directory of the desired object.
-    if (path.contains("/")) {
+    if (path.contains(Constants.DIRECTORY_SEPARATOR)) {
       String[] pathComponents = getPathComponents(path);
       location = (Directory) get(pathComponents[0]);
       path = pathComponents[1];
