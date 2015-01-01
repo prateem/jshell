@@ -37,7 +37,8 @@ public class Mkdir extends Command {
    * @return Valid "mkdir" command components.
    */
   @Override
-  public String[] getValidComponents(String command) throws ValidationException {
+  public String[] getValidComponents(String command)
+      throws ValidationException {
     String[] components = stripWhitespace(command);
 
     if (components.length < 2) {
@@ -59,12 +60,12 @@ public class Mkdir extends Command {
   }
 
   /**
-   * Identify any problems with making a directory using the specified path.
-   * Ensures that the directory name is valid, and that the location to make the
-   * directory in exists. Finally, ensures that the directory does not already
+   * Identify any problems with making a Directory using the specified path.
+   * Ensures that the Directory name is valid, and that the location to make the
+   * Directory in exists. Finally, ensures that the Directory does not already
    * exist.
    *
-   * @param directoryPath The path to the directory to check for problems with.
+   * @param directoryPath The desired path to the Directory to be made.
    */
   private boolean directoryCanBeMade(String directoryPath) {
     String[] pathComponents = Path.getPathComponents(directoryPath);

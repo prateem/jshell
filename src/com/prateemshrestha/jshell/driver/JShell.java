@@ -28,7 +28,7 @@ public class JShell {
     Scanner scanner = new Scanner(System.in);
 
     showPrompt();
-    String input = scanner.nextLine().toString();
+    String input = scanner.nextLine();
 
     do {
 
@@ -41,7 +41,7 @@ public class JShell {
       }
 
       showPrompt();
-      input = scanner.nextLine().toString();
+      input = scanner.nextLine();
 
     } while (!input.toLowerCase().equals(_exit));
 
