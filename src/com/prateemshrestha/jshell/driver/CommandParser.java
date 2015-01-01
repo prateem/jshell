@@ -1,11 +1,6 @@
 package com.prateemshrestha.jshell.driver;
 
-import com.prateemshrestha.jshell.commands.Cd;
-import com.prateemshrestha.jshell.commands.Command;
-import com.prateemshrestha.jshell.commands.Mkdir;
-import com.prateemshrestha.jshell.commands.PopD;
-import com.prateemshrestha.jshell.commands.PushD;
-import com.prateemshrestha.jshell.commands.Pwd;
+import com.prateemshrestha.jshell.commands.*;
 import com.prateemshrestha.jshell.exceptions.JShellException;
 import com.prateemshrestha.jshell.exceptions.ValidationException;
 import com.prateemshrestha.jshell.system.utilities.FileWriter;
@@ -106,11 +101,20 @@ public class CommandParser {
    */
   public void populateCommandMap() {
     commandMap = new HashMap<String, Command>();
+    commandMap.put("cat", new Cat(path));
     commandMap.put("cd", new Cd(path));
+    commandMap.put("cp", new Cp(path));
+    commandMap.put("echo", new Echo(path));
+    commandMap.put("get", new Get(path));
+    commandMap.put("grep", new Grep(path));
+    commandMap.put("ls", new Ls(path));
+    commandMap.put("man", new Man(path));
     commandMap.put("mkdir", new Mkdir(path));
+    commandMap.put("mv", new Mv(path));
     commandMap.put("popd", new PopD(path));
     commandMap.put("pushd", new PushD(path));
     commandMap.put("pwd", new Pwd(path));
+    commandMap.put("rm", new Rm(path));
   }
 
   /**
