@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
  * @see com.prateem.jshell.commands.Mkdir
  * @see com.prateem.jshell.commands.Pwd
  */
-public abstract class Command implements RunnableCommand {
+public abstract class Command {
 
   /**
    * TODO
@@ -34,6 +34,26 @@ public abstract class Command implements RunnableCommand {
   public Command(Path path) {
     this.path = path;
   }
+
+  /**
+   * Return an array of command components that can be used to carry out a
+   * successful run operation.
+   *
+   * @param command The command string to generate valid components from.
+   * @return An array of command components that can be utilized to run.
+   * @throws ValidationException If validating command components resulted in
+   * an error.
+   */
+  public abstract String[] getValidComponents(String command)
+      throws ValidationException;
+
+  /**
+   * Execute the implementation .
+   *
+   * @param args Arguments required to run the operation.
+   * @throws FileSystemException If running of the operation caused an error.
+   */
+  public abstract void run(String[] args) throws FileSystemException;
 
   /**
    * Strip all whitespace from a command input and return a String array.
