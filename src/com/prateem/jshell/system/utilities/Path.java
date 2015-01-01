@@ -58,12 +58,12 @@ public class Path {
    */
   public static String[] getPathComponents(String path) {
     String[] pathNodes = path.split("/");
-    String[] output = new String[2];
-    output[1] = pathNodes[pathNodes.length - 1];
+    String[] components = new String[2];
+    components[1] = pathNodes[pathNodes.length - 1];
 
     StringBuilder pathBuilder = new StringBuilder();
+    // Maintain absolute paths.
     if (path.startsWith("/")) {
-      // Maintain absolute paths.
       pathBuilder.append("/");
     }
 
@@ -77,8 +77,8 @@ public class Path {
       }
     }
 
-    output[0] = pathBuilder.toString();
-    return output;
+    components[0] = pathBuilder.toString();
+    return components;
   }
 
   /**
@@ -179,18 +179,19 @@ public class Path {
       return FileSystem.ROOT;
     }
 
-    // Find the Directory of the desired object.
     Directory location = workingDirectory;
-    if (path.contains("/")) {
-      String[] pathComponents = getPathComponents(path);
-      location = (Directory) get(pathComponents[1]);
-      path = pathComponents[1];
-    }
 
     if (path.equals(".")) {
       return location;
     } else if (path.equals("..")) {
       return location.getParent();
+    }
+
+    // Find the Directory of the desired object.
+    if (path.contains("/")) {
+      String[] pathComponents = getPathComponents(path);
+      location = (Directory) get(pathComponents[0]);
+      path = pathComponents[1];
     }
 
     return location.getChildByName(path);
