@@ -1,14 +1,14 @@
-package com.prateem.jshell.commands;
+package com.prateemshrestha.jshell.commands;
 
-import com.prateem.jshell.driver.JShellRunner;
-import com.prateem.jshell.system.utilities.Path;
+import com.prateemshrestha.jshell.driver.JShellRunner;
+import com.prateemshrestha.jshell.system.utilities.Path;
 
 /**
  * TODO
  *
  * @author Prateem Shrestha
- * @see com.prateem.jshell.driver.CommandParser
- * @see com.prateem.jshell.commands.Cd
+ * @see com.prateemshrestha.jshell.driver.CommandParser
+ * @see com.prateemshrestha.jshell.commands.Cd
  */
 public class Pwd extends Command {
 

@@ -1,10 +1,10 @@
-package com.prateem.jshell.system;
+package com.prateemshrestha.jshell.system;
 
 /**
  * Basic node of a FileSystem. Has a name and contents.
  *
  * @author Prateem Shrestha
- * @see com.prateem.jshell.system.Directory
+ * @see com.prateemshrestha.jshell.system.Directory
  */
 public class File extends FileSystemObject {
 

@@ -1,14 +1,12 @@
-package com.prateem.jshell.system;
-
-import com.prateem.jshell.exceptions.FileSystemException;
+package com.prateemshrestha.jshell.system;
 
 /**
  * FileSystem whose root inside of which all manipulations are done.
  *
  * @author Prateem Shrestha
- * @see com.prateem.jshell.system.FileSystemObject
- * @see com.prateem.jshell.system.File
- * @see com.prateem.jshell.system.Directory
+ * @see com.prateemshrestha.jshell.system.FileSystemObject
+ * @see com.prateemshrestha.jshell.system.File
+ * @see com.prateemshrestha.jshell.system.Directory
  */
 public class FileSystem {
 

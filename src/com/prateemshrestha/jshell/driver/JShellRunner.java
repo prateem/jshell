@@ -1,6 +1,6 @@
-package com.prateem.jshell.driver;
+package com.prateemshrestha.jshell.driver;
 
-import com.prateem.jshell.system.utilities.OutputCapturer;
+import com.prateemshrestha.jshell.system.utilities.OutputCapturer;
 
 /**
  * Takes messages and runs them to the JShell output!

@@ -1,14 +1,14 @@
-package com.prateem.jshell.system;
+package com.prateemshrestha.jshell.system;
 
-import com.prateem.jshell.exceptions.FileSystemException;
+import com.prateemshrestha.jshell.exceptions.FileSystemException;
 
 /**
  * TODO
  *
  * @author Prateem Shrestha
- * @see com.prateem.jshell.system.FileSystem
- * @see com.prateem.jshell.system.File
- * @see com.prateem.jshell.system.Directory
+ * @see com.prateemshrestha.jshell.system.FileSystem
+ * @see com.prateemshrestha.jshell.system.File
+ * @see com.prateemshrestha.jshell.system.Directory
  */
 public abstract class FileSystemObject implements Comparable<FileSystemObject> {
 
@@ -83,7 +83,7 @@ public abstract class FileSystemObject implements Comparable<FileSystemObject> {
    * Build and return a deep copy of this object.
    *
    * @return A new deep copy of this object.
-   * @throws com.prateem.jshell.exceptions.FileSystemException If building of the clone object resulted in
+   * @throws FileSystemException If building of the clone object resulted in
    * an error.
    */
   public abstract FileSystemObject getClone() throws FileSystemException;

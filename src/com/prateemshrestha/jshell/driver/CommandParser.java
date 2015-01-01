@@ -1,14 +1,13 @@
-package com.prateem.jshell.driver;
+package com.prateemshrestha.jshell.driver;
 
-import com.prateem.jshell.commands.Cd;
-import com.prateem.jshell.commands.Command;
-import com.prateem.jshell.commands.Mkdir;
-import com.prateem.jshell.commands.PopD;
-import com.prateem.jshell.commands.PushD;
-import com.prateem.jshell.commands.Pwd;
-import com.prateem.jshell.exceptions.JShellException;
-import com.prateem.jshell.system.FileSystem;
-import com.prateem.jshell.system.utilities.Path;
+import com.prateemshrestha.jshell.commands.Cd;
+import com.prateemshrestha.jshell.commands.Command;
+import com.prateemshrestha.jshell.commands.Mkdir;
+import com.prateemshrestha.jshell.commands.PopD;
+import com.prateemshrestha.jshell.commands.PushD;
+import com.prateemshrestha.jshell.commands.Pwd;
+import com.prateemshrestha.jshell.exceptions.JShellException;
+import com.prateemshrestha.jshell.system.utilities.Path;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,10 +16,10 @@ import java.util.Map;
  * TODO
  *
  * @author Prateem Shrestha
- * @see com.prateem.jshell.commands.Command
- * @see com.prateem.jshell.commands.Cd
- * @see com.prateem.jshell.commands.Mkdir
- * @see com.prateem.jshell.commands.Pwd
+ * @see com.prateemshrestha.jshell.commands.Command
+ * @see com.prateemshrestha.jshell.commands.Cd
+ * @see com.prateemshrestha.jshell.commands.Mkdir
+ * @see com.prateemshrestha.jshell.commands.Pwd
  */
 public class CommandParser {
 
@@ -41,6 +40,7 @@ public class CommandParser {
    */
   public CommandParser(Path path) {
     this.path = path;
+    populateCommandMap();
   }
 
   /**
@@ -64,4 +64,5 @@ public class CommandParser {
     commandMap.put("pushd", new PushD(path));
     commandMap.put("pwd", new Pwd(path));
   }
+
 }

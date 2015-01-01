@@ -1,11 +1,11 @@
-package com.prateem.jshell.exceptions;
+package com.prateemshrestha.jshell.exceptions;
 
 /**
  * Carries exception messages that relate to the JShell's environment.
  *
  * @author Prateem Shrestha
- * @see com.prateem.jshell.exceptions.FileSystemException
- * @see com.prateem.jshell.exceptions.ValidationException
+ * @see com.prateemshrestha.jshell.exceptions.FileSystemException
+ * @see com.prateemshrestha.jshell.exceptions.ValidationException
  */
 public abstract class JShellException extends Exception {
 

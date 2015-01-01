@@ -1,8 +1,8 @@
-package com.prateem.jshell.commands;
+package com.prateemshrestha.jshell.commands;
 
-import com.prateem.jshell.exceptions.FileSystemException;
-import com.prateem.jshell.exceptions.ValidationException;
-import com.prateem.jshell.system.utilities.Path;
+import com.prateemshrestha.jshell.exceptions.FileSystemException;
+import com.prateemshrestha.jshell.exceptions.ValidationException;
+import com.prateemshrestha.jshell.system.utilities.Path;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,13 +10,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * TODO
+ * Parent class for all commands. Outlines basic command functionality
+ * and provides utility methods.
  *
  * @author Prateem Shrestha
- * @see com.prateem.jshell.driver.CommandParser
- * @see com.prateem.jshell.commands.Cd
- * @see com.prateem.jshell.commands.Mkdir
- * @see com.prateem.jshell.commands.Pwd
+ * @see com.prateemshrestha.jshell.driver.CommandParser
+ * @see com.prateemshrestha.jshell.commands.Cd
+ * @see com.prateemshrestha.jshell.commands.Mkdir
+ * @see com.prateemshrestha.jshell.commands.Pwd
+ * @see com.prateemshrestha.jshell.commands.PopD
  */
 public abstract class Command {
 

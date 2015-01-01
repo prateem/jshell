@@ -1,13 +1,15 @@
-package com.prateem.jshell.commands;
+package com.prateemshrestha.jshell.commands;
 
-import com.prateem.jshell.exceptions.FileSystemException;
-import com.prateem.jshell.exceptions.ValidationException;
-import com.prateem.jshell.system.utilities.Path;
+import com.prateemshrestha.jshell.exceptions.FileSystemException;
+import com.prateemshrestha.jshell.exceptions.ValidationException;
+import com.prateemshrestha.jshell.system.utilities.Path;
 
 /**
  * TODO
  *
  * @author Prateem Shrestha
+ * @see com.prateemshrestha.jshell.driver.CommandParser
+ * @see com.prateemshrestha.jshell.commands.PushD
  */
 public class PopD extends Command {
 

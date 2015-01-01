@@ -1,15 +1,15 @@
-package com.prateem.jshell.commands;
+package com.prateemshrestha.jshell.commands;
 
-import com.prateem.jshell.exceptions.FileSystemException;
-import com.prateem.jshell.exceptions.ValidationException;
-import com.prateem.jshell.system.utilities.Path;
+import com.prateemshrestha.jshell.exceptions.FileSystemException;
+import com.prateemshrestha.jshell.exceptions.ValidationException;
+import com.prateemshrestha.jshell.system.utilities.Path;
 
 /**
  *
  *
  * @author Prateem Shrestha
- * @see com.prateem.jshell.driver.CommandParser
- * @see com.prateem.jshell.commands.PopD
+ * @see com.prateemshrestha.jshell.driver.CommandParser
+ * @see com.prateemshrestha.jshell.commands.PopD
  */
 public class PushD extends Command {
 
@@ -28,7 +28,7 @@ public class PushD extends Command {
    *
    * @param command A String to validate as a command.
    * @return String[] of command components.
-   * @throws com.prateem.jshell.exceptions.ValidationException
+   * @throws ValidationException
    */
   @Override
   public String[] getValidComponents(String command) throws ValidationException {
@@ -39,7 +39,7 @@ public class PushD extends Command {
    * Run a validated command.
    *
    * @param components Validated command components to run with.
-   * @throws com.prateem.jshell.exceptions.FileSystemException
+   * @throws FileSystemException
    */
   @Override
   public void run(String[] components) throws FileSystemException {

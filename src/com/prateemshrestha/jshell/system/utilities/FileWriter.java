@@ -1,10 +1,10 @@
-package com.prateem.jshell.system.utilities;
+package com.prateemshrestha.jshell.system.utilities;
 
-import com.prateem.jshell.exceptions.FileSystemException;
-import com.prateem.jshell.exceptions.ValidationException;
-import com.prateem.jshell.system.File;
-import com.prateem.jshell.system.FileSystemObject;
-import com.prateem.jshell.system.Directory;
+import com.prateemshrestha.jshell.exceptions.FileSystemException;
+import com.prateemshrestha.jshell.exceptions.ValidationException;
+import com.prateemshrestha.jshell.system.File;
+import com.prateemshrestha.jshell.system.FileSystemObject;
+import com.prateemshrestha.jshell.system.Directory;
 
 /**
  * Responsible for writing to a File object in the FileSystem. Calls to write()
@@ -16,6 +16,7 @@ import com.prateem.jshell.system.Directory;
  * any potential File that has a name identical to the one specified.
  *
  * @author Prateem Shrestha
+ * @see com.prateemshrestha.jshell.system.File
  */
 public class FileWriter {
 

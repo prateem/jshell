@@ -1,9 +1,9 @@
-package com.prateem.jshell.system.utilities;
+package com.prateemshrestha.jshell.system.utilities;
 
-import com.prateem.jshell.exceptions.FileSystemException;
-import com.prateem.jshell.system.Directory;
-import com.prateem.jshell.system.FileSystem;
-import com.prateem.jshell.system.FileSystemObject;
+import com.prateemshrestha.jshell.exceptions.FileSystemException;
+import com.prateemshrestha.jshell.system.Directory;
+import com.prateemshrestha.jshell.system.FileSystem;
+import com.prateemshrestha.jshell.system.FileSystemObject;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -13,8 +13,8 @@ import java.util.Deque;
  * instantiated for.
  *
  * @author Prateem Shrestha
- * @see com.prateem.jshell.system.FileSystem
- * @see com.prateem.jshell.system.Directory
+ * @see com.prateemshrestha.jshell.system.FileSystem
+ * @see com.prateemshrestha.jshell.system.Directory
  */
 public class Path {
 
