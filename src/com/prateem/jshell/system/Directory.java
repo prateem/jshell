@@ -1,7 +1,6 @@
 package com.prateem.jshell.system;
 
 import com.prateem.jshell.exceptions.FileSystemException;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -150,7 +149,7 @@ public class Directory extends FileSystemObject
    * can not share a name in this system.
    */
   @Override
-  public int compareTo(@NotNull FileSystemObject fso) {
+  public int compareTo(FileSystemObject fso) {
     if (fso instanceof File) {
       return -1;
     }
